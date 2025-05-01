@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Kuis Sistem Komputer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e2f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #2a2a3d;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00c896;
+      margin-bottom: 20px;
+    }
+
+    select, input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #00c896;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #009e79;
+    }
+
+    .error {
+      color: #ff6b6b;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login Kuis</h2>
+    <select id="username">
+      <option value="">-- Pilih Kelompok --</option>
+      <option value="kel1">Kelompok 1</option>
+      <option value="kel2">Kelompok 2</option>
+      <option value="kel3">Kelompok 3</option>
+      <option value="kel4">Kelompok 4</option>
+      <option value="kel5">Kelompok 5</option>
+      <option value="kel6">Kelompok 6</option>
+    </select>
+    <input type="password" id="password" placeholder="Masukkan kode angka">
+    <button onclick="login()">Masuk</button>
+    <div class="error" id="error"></div>
+  </div>
+
+  <script>
+    
+    const users = {
+      kel1: "12345",
+      kel2: "23456",
+      kel3: "34567",
+      kel4: "45678",
+      kel5: "56789",
+      kel6: "606061"
+    };
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const errorDiv = document.getElementById("error");
+
+      if (!username || !password) {
+        errorDiv.textContent = "Harap isi semua data!";
+        return;
+      }
+
+      if (users[username] === password) {
+        // Simpan status login di localStorage
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "postujuh.html"; // halaman soal nanti dibuat
+      } else {
+        errorDiv.textContent = "Username atau password salah!";
+      }
+    }
+  </script>
+</body>
+</html>
